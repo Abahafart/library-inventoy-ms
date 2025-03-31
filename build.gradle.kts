@@ -43,11 +43,8 @@ extra["springCloudVersion"] = "2024.0.1"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
-    
-    
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     runtimeOnly("org.postgresql:postgresql")
-    
     implementation("com.google.cloud:spring-cloud-gcp-starter-pubsub")
     implementation("com.google.cloud:spring-cloud-gcp-pubsub-stream-binder")
     implementation("org.springframework.boot:spring-boot-starter-web") {
