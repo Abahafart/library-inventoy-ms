@@ -1,0 +1,44 @@
+serviceAccount:
+  create: false
+  name: "app-domain-sa"
+
+podSecurityContext:
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
+
+securityContext:
+   capabilities:
+     drop:
+     - ALL
+   readOnlyRootFilesystem: false
+   runAsNonRoot: true
+   runAsUser: 1000
+
+service:
+  enabled: false
+
+virtualService:
+  enabled: false
+
+livenessProbe:
+  failureThreshold: 3
+  initialDelaySeconds: 120
+  periodSeconds: 60
+  successThreshold: 1
+  timeoutSeconds: 10
+  httpGet:
+    path: /actuator/health
+    port: http
+
+readinessProbe:
+  httpGet:
+    path: /actuator/health
+    port: http
+  failureThreshold: 10
+  initialDelaySeconds: 60
+  periodSeconds: 5
+  successThreshold: 1
+  timeoutSeconds: 5
+
+

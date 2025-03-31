@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  
+  
+  library-database:
+      image: postgres:16.2-alpine3.19
+      environment:
+        - POSTGRES_USER=liverpool-user
+        - POSTGRES_PASSWORD=liverpoolPassPostgresql1
+        - POSTGRES_DB=liverpoolDb
+      ports:
+        - "12965:5432"
+      restart: always
+  
+  pubsub-google:
+    image: google/cloud-sdk:emulators
+    ports:
+      - "8025:8085"
+    command: /bin/bash -c "gcloud beta emulators pubsub start --project=some-project-id --host-port='0.0.0.0:8085'"
+    restart: always

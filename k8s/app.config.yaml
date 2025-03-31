@@ -1,0 +1,20 @@
+spec:
+  app_name: library-inventory-ms
+  namespace: sit1-product
+  chart: dig-base
+  environments:
+    dev:
+      chart_version: 0.1.6
+      values:
+        - ./k8s/common.values.yaml
+        - ./k8s/dev.values.yaml
+    stg:
+      chart_version: 0.1.6
+      values:
+        - ./k8s/common.values.yaml
+        - ./k8s/qa.values.yaml
+    prd:
+      chart_version: 0.1.6
+      values:
+        - ./k8s/common.values.yaml
+        - ./k8s/prd.values.yaml
